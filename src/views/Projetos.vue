@@ -1,24 +1,12 @@
 <template>
   <section class="projetos">
       <h1>Projetos</h1>
-      <form @submit.prevent="salvar">
-        <div class="field">
-          <label for="projeto" class="label">
-            Nome do Projeto
-          </label>
-          <input
-            type="text"
-            class="input"
-            v-model="nomeDoProjeto"
-            id="nomeDoProjeto"
-          />
-        </div>
-        <div class="field">
-            <button class="button" type="submit">
-                Salvar
-            </button>
-        </div>
-      </form>
+      <router-link to="/projetos/novo" class="button">
+        <span class="icon is-small">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span>Novo projeto</span>
+      </router-link>
       <table class="table is-fullwidth">
         <thead>
             <tr>
@@ -42,21 +30,9 @@ import { useStore } from '@/store';
 
 export default defineComponent({
   name: 'Projetos',
-  data () {
-    return {
-        nomeDoProjeto: "",
-    };
-  },
-  methods: {
-    salvar () {
-      this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto)        
-      this.nomeDoProjeto = '';
-    },
-  },
   setup () {
     const store = useStore()
     return {
-      store,
       projetos: computed(() => store.state.projetos)
     }
   }
