@@ -81,6 +81,7 @@ export default defineComponent({
     },
     alterarTarefa () {
       this.store.dispatch(ALTERAR_TAREFA, this.tarefaSelecionada)
+      .then(() => this.fecharModal())
     }
   },
   computed: {

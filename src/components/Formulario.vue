@@ -57,7 +57,7 @@ export default defineComponent({
       this.$emit('aoSalvarTarefa', {
         duracaoEmSegundos: tempoDecorrido,
         descricao: this.descricao,
-        projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+        projeto: this.projetos.find((proj) => proj.id == this.idProjeto)
       })
       this.descricao = ''
     }
@@ -65,7 +65,7 @@ export default defineComponent({
   setup () {
     const store = useStore(key)
     return {
-      projetos: computed(() => store.state.projetos)
+      projetos: computed(() => store.state.projeto.projetos)
     }
   }
 });
